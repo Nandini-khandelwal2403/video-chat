@@ -23,7 +23,7 @@ app.get("/", function (req, res) {
 });
 
 // var server = http.createServer(app);
-const server = https.createServer(options, app);
+const server = http.createServer(options, app);
 server.listen(process.env.PORT || 8000);
 
 var io = socketIO(server);
