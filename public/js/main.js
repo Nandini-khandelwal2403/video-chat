@@ -7,14 +7,54 @@ var pc;
 var remoteStream;
 var turnReady;
 var isStarted = false;
+var userStream;
+var userAudio;
 
 var pcConfig = turnConfig;
 
+const toggleButton1 = document.querySelector('.cam');
+const toggleButton2 = document.querySelector('.aud');
+
+// navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+//     userStream = stream;
+// })
+
+// const audio1 = navigator.mediaDevices.getUserMedia({ audio: true });
+// userAudio = audio1;
+
+// var localStreamConstraints = {
+//     audio2: userAudio,
+//     stream2: userStream,
+// }
+
 var localStreamConstraints = {
     audio: true,
-    video: true
+    video: true,
 }
 
+
+
+toggleButton1.addEventListener('click', () => {
+    const videoTrack = localStream.getTracks().find(track => track.kind === 'video');
+    if (videoTrack.enabled) {
+        videoTrack.enabled = false;
+        toggleButton1.innerHTML = 'Show cam';
+    } else {
+        videoTrack.enabled = true;
+        toggleButton1.innerHTML = 'Hide cam';
+    }
+})
+
+toggleButton2.addEventListener('click', () => {
+    const audioTrack = localStream.getTracks().find(track => track.kind === 'audio');
+    if (audioTrack.enabled) {
+        audioTrack.enabled = false;
+        toggleButton2.innerHTML = "Audio on";
+    } else {
+        audioTrack.enabled = true;
+        toggleButton2.innerHTML = "Audio off";
+    }
+})
 var room = prompt('Enter room name: ');
 
 var socket = io.connect();
@@ -95,11 +135,11 @@ function gotStream(stream) {
     }
 }
 
-console.log('Getting user media with constraints', localStreamConstraints);
+// console.log('Getting user media with constraints', localStreamConstraints);
 
 function maybeStart() {
     console.log('>>>>> maybeStart() ', isStarted, localStream, isChannelReady);
-    if (!isStarted && typeof localStream !== 'underfined' && isChannelReady) {
+    if (!isStarted && typeof localStream !== 'undefined' && isChannelReady) {
         console.log('>>>>> creating peer connection');
         createPeerConnection();
         pc.addStream(localStream);

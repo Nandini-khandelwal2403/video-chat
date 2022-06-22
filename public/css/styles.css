@@ -128,13 +128,13 @@ body {
     }
 
     .local_div {
-        width: 40%;
-        float: left
+        width: 45%;
+        float: left;
+        margin-right: 40px;
     }
 
     .remote_div {
-        width: 40%;
-        float: left
+        width: 45%;
     }
 
     .remote2_div {
@@ -145,8 +145,24 @@ body {
     #video_container {
         display: flex;
         width: 85%;
-        margin: auto;
-        height: 80%
+        margin-left: 10%;
+        height: 80%;
+    }
+
+    .streamIcons {
+
+        margin-top: 30px;
+
+    }
+
+    i {
+        width: 30px;
+        height: 40px;
+    }
+
+    .cam {
+        margin-left: 45%;
+        margin-right: 10px;
     }
 
     video {

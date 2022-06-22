@@ -8,7 +8,7 @@ var https = require('https');
 var socketIO = require('socket.io');
 
 var fs = require('fs');
-var path = require('path');
+var path = require('path');               // why required ? its use ?
 const key = fs.readFileSync(path.join(__dirname, '/certs/selfsigned.key'));
 const cert = fs.readFileSync(path.join(__dirname, '/certs/selfsigned.crt'));
 const options = {
@@ -23,7 +23,7 @@ app.get("/", function (req, res) {
 });
 
 // var server = http.createServer(app);
-const server = http.createServer(options, app);
+const server = https.createServer(options, app);    // why have we given this app and options
 server.listen(process.env.PORT || 8000);
 
 var io = socketIO(server);
@@ -55,16 +55,20 @@ io.sockets.on('connection', function (socket) {
         }
         else if (numClients === 1) {
             log('Client ID ' + socket.id + ' created room ' + room);
+
+            //ismai baaki 2 extra lines ka kya need tha 
             io.sockets.in(room).emit('join', room);
             socket.join(room);
             socket.emit('joined', room, socket.id);
             io.sockets.in(room).emit('ready');
+            //-----------
         }
         else {
             socket.emit('full', room);
         }
     });
 
+    //ye kiska ip address chahiye inhe aur kar kaise rahe hai?
     socket.on('ipaddr', function () {
         var ifaces = os.networkInterfaces();
         for (var dev in ifaces) {
