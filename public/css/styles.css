@@ -144,15 +144,19 @@ body {
 
     #video_container {
         display: flex;
-        width: 85%;
-        margin-left: 10%;
-        height: 80%;
+        width: 85vw;
+        margin: auto;
+        height: 90%;
+    }
+
+    #video_display {
+        width: 100vw;
     }
 
     .streamIcons {
 
         margin-top: 30px;
-
+        font-size: 20%;
     }
 
     i {
@@ -243,7 +247,7 @@ body {
 
     .local_div {
         display: flex;
-        width: 100%;
+        width: 120px;
         position: relative;
         overflow: hidden;
         z-index: -1;
@@ -258,26 +262,27 @@ body {
         z-index: 1;
     }
 
-    .remote2_div {
+    /* .remote2_div {
         width: 120px;
         display: block;
         position: absolute;
         top: 95px;
         right: 0px;
         z-index: 1;
-    }
+    } */
 
     #video_container {
         height: 80%;
         position: relative;
         display: flex;
-        flex-wrap: wrap
+        flex-wrap: wrap;
     }
 
     .remote_div video {
-        -ms-flex: 0 0 100%;
-        flex: 0 0 100%;
-        max-width: 100%;
+        /* -ms-flex: 0 0 100%;
+        flex: 0 0 100%; */
+        max-width: 30%;
+        margin: auto;
     }
 
     .remote2_div video {
