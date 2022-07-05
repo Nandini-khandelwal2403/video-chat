@@ -156,7 +156,8 @@ body {
     .streamIcons {
 
         margin-top: 30px;
-        font-size: 20%;
+        font-size: 2rem;
+        margin-right: 200px;
     }
 
     i {
@@ -166,7 +167,7 @@ body {
 
     .cam {
         margin-left: 45%;
-        margin-right: 10px;
+        margin-right: 40px;
     }
 
     video {
