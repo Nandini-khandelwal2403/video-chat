@@ -64,7 +64,7 @@ toggleButton2.addEventListener('click', () => {
         toggleButton2.classList.add("fa-microphone")
     }
 })
-var room = 123 || prompt('Enter room name: ');
+var room = prompt('Enter room name: ');
 
 var socket = io.connect();
 
